@@ -3,34 +3,14 @@ const router = express.Router();
 
 const { getContacts, getContactById, createContact, updateContactById, deleteContactById } = require("../controllers/contactController");
 
-/**
- * @method GET
- * @path http://localhost:PORT/api/contacts
+/** 
+ * @path GET / POST http://localhost:PORT/api/contacts
  */
-router.route("/").get(getContacts);
+router.route("/").get(getContacts).post(createContact);;
 
 /**
- * @method GET
- * @path http://localhost:PORT/api/contacts/:id
+ * @path GET / PUT / DELETE http://localhost:PORT/api/contacts/:id
  */
-router.route("/:id").get(getContactById);
-
-/**
- * @method POST
- * @path http://localhost:PORT/api/contacts
- */
-router.route("/").post(createContact);
-
-/**
- * @method PUT
- * @path http://localhost:PORT/api/contacts/:id
- */
-router.route("/:id").put(updateContactById);
-
-/**
- * @method DELETE
- * @path http://localhost:PORT/api/contacts/:id
- */
-router.route("/:id").delete(deleteContactById);
+router.route("/:id").get(getContactById).put(updateContactById).delete(deleteContactById);
 
 module.exports = router;
