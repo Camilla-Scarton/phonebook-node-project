@@ -8,3 +8,5 @@
 - nodemon to reload server on files saving
 - dotenv to use .env file
 - express-async-handler to wrap async functions and use try/catch block without writing it
+- mongoose for data schemas
+- bcrypt for password encoding (before saving in db)
