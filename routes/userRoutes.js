@@ -1,5 +1,6 @@
 const express = require("express");
 const { registerUser, loginUser, currentUser } = require("../controllers/userController");
+const validateToken = require("../middlewares/validateTokenHandler");
 
 /** 
  * @path http://localhost:PORT/api/users
@@ -10,6 +11,6 @@ router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-router.get("/current", currentUser);
+router.get("/current", validateToken, currentUser);
 
 module.exports = router;
