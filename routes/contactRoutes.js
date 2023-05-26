@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const { getContacts, getContactById, createContact, updateContactById, deleteContactById } = require("../controllers/contactController");
+const validateToken = require("../middlewares/validateTokenHandler");
+
+// to protect all the routes
+router.use(validateToken);
 
 /** 
  * @path GET / POST http://localhost:PORT/api/contacts
