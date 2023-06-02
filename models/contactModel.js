@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const contactSchema = mongoose.Schema(
   {
+    // contact linked to a specific user
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

@@ -4,7 +4,7 @@ const router = express.Router();
 const { getContacts, getContactById, createContact, updateContactById, deleteContactById } = require("../controllers/contactController");
 const validateToken = require("../middlewares/validateTokenHandler");
 
-// to protect all the routes
+// to protect all the routes (contacts can be seen/modified only by the user linked to them)
 router.use(validateToken);
 
 /** 

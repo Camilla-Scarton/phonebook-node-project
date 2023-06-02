@@ -9,6 +9,7 @@ const Contact = require("../models/contactModel");
  * @access private
  */
 const getContacts = asyncHandler(async (req, res) => {
+    // user_id filed is in the model / req.user is provided in login
     const contacts = await Contact.find({ user_id: req.user.id });
     res.status(200).json(contacts);
 })
@@ -35,6 +36,7 @@ const getContactById = asyncHandler(async (req, res) => {
  */
 const createContact = asyncHandler(async (req, res) => {
     console.log("The request body is: ", req.body);
+    // contact info in the body to create the contact
     const { name, email, phone } = req.body;
     if (!name || !email || !phone) {
         res.status(400);
@@ -45,7 +47,7 @@ const createContact = asyncHandler(async (req, res) => {
         name,
         email,
         phone,
-        user_id: req.user.id,
+        user_id: req.user.id, // user info in the req.user to link new contact with the creator user 
     })
 
     res.status(201).json(contact);
